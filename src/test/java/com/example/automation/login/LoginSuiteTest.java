@@ -40,7 +40,6 @@ public class LoginSuiteTest {
 
 
         wait = new WebDriverWait(driver,5);
-        //Step1
         driver.get(url);
         driver.findElement(By.xpath("//*[@id=\"termsfeed-com---nb\"]/div/div[2]/button[1]")).click();
 
@@ -54,15 +53,12 @@ public class LoginSuiteTest {
 
         driver.findElement(By.xpath("//*[@id=\"alreadyHaveAccount\"]")).click();
 
-        //Step 2
         driver.findElement(By.xpath("//input[@id='userNameLogin']")).sendKeys(usuario);
 
-        //Step 3
         driver.findElement(By.xpath("//div[@clas='partial-modal-login-form']//input[@id='input-pwd']")).sendKeys(password);
 
         driver.findElement(By.xpath("//input[@id='modalLoginSubmitButton']")).click();
 
-        //Step 5
         try {
             wait.until(ExpectedConditions.urlToBe("https://www.slot.com/es/games"));
             String actualUrl = driver.getCurrentUrl();
@@ -82,16 +78,13 @@ public class LoginSuiteTest {
 
         driver.findElement(By.xpath("//*[@id=\"alreadyHaveAccount\"]")).click();
 
-        //Step 2
         driver.findElement(By.xpath("//input[@id='userNameLogin']")).sendKeys(usuario);
 
-        //Step 3
         WebElement pass = driver.findElement(By.xpath("//div[@clas='partial-modal-login-form']//input[@id='input-pwd']"));
         pass.sendKeys("test22_qa");
 
         driver.findElement(By.xpath("//input[@id='modalLoginSubmitButton']")).click();
 
-        //Step 5
         WebElement errorLogin = driver.findElement(By.xpath("//span[@id='login-username-error']"));
         String errorLoginText = errorLogin.getText();
         System.out.println("Is show text: " + errorLoginText);
@@ -100,10 +93,7 @@ public class LoginSuiteTest {
 
     @After
     public void TearDown(){
-
         driver.quit();
-
-
     }
 }
 

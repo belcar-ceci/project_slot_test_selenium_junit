@@ -16,7 +16,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class InventoryGamesSuiteTest {
-//ValidateGameSuiteTest
     WebDriver driver;
     WebDriverWait wait;
 
@@ -39,7 +38,6 @@ public class InventoryGamesSuiteTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         wait = new WebDriverWait(driver, 5);
-        //Step1
         driver.get(url);
         driver.findElement(By.xpath("//*[@id=\"termsfeed-com---nb\"]/div/div[2]/button[1]")).click();
         }
@@ -52,21 +50,18 @@ public class InventoryGamesSuiteTest {
 
             driver.findElement(By.xpath("//*[@id=\"alreadyHaveAccount\"]")).click();
 
-            //Step 2
             driver.findElement(By.xpath("//input[@id='userNameLogin']")).sendKeys(usuario);
 
-            //Step 3
             driver.findElement(By.xpath("//div[@clas='partial-modal-login-form']//input[@id='input-pwd']")).sendKeys(password);
 
             driver.findElement(By.xpath("//input[@id='modalLoginSubmitButton']")).click();
 
-            //Step 5
             int numProduct = driver.findElements(By.xpath("//slotcom-lobby-game-page[1]//slotcom-lobby-game")).size();
-            System.out.println("The number of products displayed is: " + numProduct);
+            System.out.println("The number of games displayed is: " + numProduct);
             if (numProduct == 6) {
-                System.out.println("6 products are displayed.");
+                System.out.println("6 games are displayed.");
             } else {
-                System.out.println("ERROR: 6 products have not been displayed..");
+                System.out.println("ERROR: 6 games have not been displayed..");
             }
 
         }
@@ -79,17 +74,14 @@ public class InventoryGamesSuiteTest {
 
             driver.findElement(By.xpath("//*[@id=\"alreadyHaveAccount\"]")).click();
 
-            //Step 2
             driver.findElement(By.xpath("//input[@id='userNameLogin']")).sendKeys(usuario);
 
-            //Step 3
             driver.findElement(By.xpath("//div[@clas='partial-modal-login-form']//input[@id='input-pwd']")).sendKeys(password);
 
             driver.findElement(By.xpath("//input[@id='modalLoginSubmitButton']")).click();
 
             try{
                 WebElement inventoryProduct = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//slotcom-lobby-game-page[1]//slotcom-lobby-game[1]")));
-                // Validar que el producto está visible en el inventario
                 Assert.assertTrue(inventoryProduct.isDisplayed());
                 System.out.println("The product " + inventoryProduct + " has been found in inventory.");
             } catch (Exception e) {
@@ -101,8 +93,6 @@ public class InventoryGamesSuiteTest {
 
     @After
     public void TearDown(){
-        //step closure
         driver.quit();
-
-    }
+        }
     }

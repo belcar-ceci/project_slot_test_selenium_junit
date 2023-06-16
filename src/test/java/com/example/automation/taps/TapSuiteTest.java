@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-//import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashSet;
@@ -41,7 +40,6 @@ public class TapSuiteTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         wait = new WebDriverWait(driver, 5);
-        //Step1
         driver.get(url);
         driver.findElement(By.xpath("//*[@id=\"termsfeed-com---nb\"]/div/div[2]/button[1]")).click();
     }
@@ -60,16 +58,12 @@ public class TapSuiteTest {
 
         driver.findElement(By.xpath("//input[@id='modalLoginSubmitButton']")).click();
 
-        // Obtener el elemento del header
         WebElement headerElement = driver.findElement(By.className("c-slotcom-header"));
 
-        // Obtener todos los elementos hijos del header
         List<WebElement> headerElements = headerElement.findElements(By.xpath(".//*"));
 
-        // Utilizar un conjunto (Set) para almacenar los textos únicos
         Set<String> uniqueTexts = new HashSet<>();
 
-        // Recorrer los elementos del header y almacenar los textos únicos en el conjunto
         for (WebElement element : headerElements) {
             String text = element.getText().trim();
             if (!text.isEmpty()) {
@@ -77,8 +71,7 @@ public class TapSuiteTest {
             }
         }
 
-        // Mostrar los textos únicos del header
-        System.out.println("Textos únicos del header:");
+        System.out.println("Unique header texts:");
         for (String text : uniqueTexts) {
             System.out.println(text);
         }
@@ -99,15 +92,12 @@ public class TapSuiteTest {
 
         driver.findElement(By.xpath("//input[@id='modalLoginSubmitButton']")).click();
 
-
-           // Hacer clic en el elemento con XPath "//span[@class='c-buy-button__text']" para abrir el modal
            WebElement buyButton = driver.findElement(By.xpath("//span[@class='c-buy-button__text']"));
            buyButton.click();
 
-           // Hacer clic en el botón "Regresar" dentro del modal
            WebElement backButton = driver.findElement(By.xpath("//div[@id='shop-back-button']"));
            backButton.click();
-           // Mostrar mensaje de que ha vuelto después de hacer clic en el botón "Regresar"
+
            System.out.println("It has been returned after clicking the 'Return' button");
 
     }
@@ -116,7 +106,6 @@ public class TapSuiteTest {
 
     @After
     public void TearDown(){
-        //step closure
         driver.quit();
 
     }

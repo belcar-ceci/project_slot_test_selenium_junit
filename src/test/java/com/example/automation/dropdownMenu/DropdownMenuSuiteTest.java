@@ -22,8 +22,6 @@ public class DropdownMenuSuiteTest {
     String usuario = "test0023";
     String password = "test0023_qa";
 
-    //String expectedUrl = "https://www.slot.com/es/games";
-
     @Before
     public void SetUp() {
         WebDriverManager.chromedriver().setup();
@@ -55,14 +53,12 @@ public class DropdownMenuSuiteTest {
 
         driver.findElement(By.xpath("//input[@id='modalLoginSubmitButton']")).click();
 
-        // Hacer clic en el elemento con XPath "//span[@class='c-buy-button__text']" para abrir el modal
         WebElement menuButton = driver.findElement(By.xpath("//div[@class='side-menu__icon']"));
         menuButton.click();
 
         WebElement sideNavIsShow = driver.findElement(By.xpath("//mat-list[@class='mat-list mat-list-base']"));
         sideNavIsShow.click();
 
-        // Encontrar el elemento de "Términos y Condiciones" en el menú desplegable y mostrar el texto
         WebElement termsLink = driver.findElement(By.xpath("//p[@id='Términos y Condiciones']"));
         String termsText = termsLink.getText();
         System.out.println("Is show text : " + termsText);
@@ -94,7 +90,6 @@ public class DropdownMenuSuiteTest {
 
     @After
     public void TearDown(){
-        //step closure
         driver.quit();
 
     }

@@ -38,7 +38,7 @@ public class LogoutSuiteTest {
 
 
         wait = new WebDriverWait(driver,5);
-        //Step1
+
         driver.get(url);
         driver.findElement(By.xpath("//*[@id=\"termsfeed-com---nb\"]/div/div[2]/button[1]")).click();
     }
@@ -57,7 +57,6 @@ public class LogoutSuiteTest {
 
         driver.findElement(By.xpath("//input[@id='modalLoginSubmitButton']")).click();
 
-        // Hacer clic en el elemento con XPath "//span[@class='c-buy-button__text']" para abrir el modal
         WebElement menuButton = driver.findElement(By.xpath("//div[@class='side-menu__icon']"));
         menuButton.click();
 
@@ -80,20 +79,16 @@ public class LogoutSuiteTest {
 
         driver.findElement(By.xpath("//input[@id='modalLoginSubmitButton']")).click();
 
-        // Hacer clic en el elemento con XPath "//span[@class='c-buy-button__text']" para abrir el modal
         WebElement menuButton = driver.findElement(By.xpath("//div[@class='side-menu__icon']"));
         menuButton.click();
 
-        // Hacer clic en el enlace de "Cerrar sesion" para cerrar la sesion de usuario.
         WebElement clickOptionLogout = driver.findElement(By.xpath("//p[@id='Cerrar sesión']"));
         clickOptionLogout.click();
     }
 
     @After
     public void TearDown(){
-        //step closure
         driver.quit();
-
     }
 
 }
